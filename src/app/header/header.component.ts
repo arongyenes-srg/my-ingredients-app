@@ -1,20 +1,13 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-  @Output() featureSelected = new EventEmitter<string>();
-
-  constructor(private dataStorageService: DataStorageService) { }
-
-  onSelect(feature: string) {
-    this.featureSelected.emit(feature);
-  }
+  constructor(private dataStorageService: DataStorageService) {}
 
   onSaveData() {
     this.dataStorageService.storeRecipes();
@@ -23,5 +16,4 @@ export class HeaderComponent {
   onFetchData() {
     this.dataStorageService.fetchRecipes().subscribe();
   }
-
 }
